@@ -1,15 +1,7 @@
-import { getPost } from "../api/post";
-
-getPost((res: { data: any; }) => {
-    // success
-    console.log(res.data);
-},(err: any) => {
-    // error
-    alert(err);
-});
+import PostPage from "../pages/postPage";
 
 function App() {
-  return <div>Hello World</div>;
+  return <PostPage/>;
 }
 
 export default App;
