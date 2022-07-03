@@ -2,12 +2,15 @@ import React from 'react';
 import { getPost } from '../api/post';
 
 export default class PostPage extends React.Component {
+  allCategoriesOption = 'All categories'
+  postPerLoad = 5;
   state = {
     posts: [],
     categories: [],
-    selectedCategory: 'All categories'
+    selectedCategory: this.allCategoriesOption,
+    pagination: this.postPerLoad
   }
-
+  
 
   componentDidMount() {
     getPost((res: { data: any; }) => {
@@ -16,7 +19,7 @@ export default class PostPage extends React.Component {
       this.setState({ posts });
 
       // get list of unique category
-      const categories: Array<String> = ['All categories'];
+      const categories: Array<String> = [this.allCategoriesOption];
       posts.forEach(post => {
         post.categories.forEach(category => {
           // if category not exist, push into categories array
@@ -34,7 +37,7 @@ export default class PostPage extends React.Component {
 
   // check if selectedCategory exist in post.categories
   isSelectedCategory = categories => {
-    return categories.some(category => category.name === this.state.selectedCategory)
+    return categories.some(category => category.name === this.state.selectedCategory);
   }
 
   render() {
@@ -43,7 +46,7 @@ export default class PostPage extends React.Component {
         <h1>Posts Lists</h1>
         {/* Category picker */}
         Filter
-        <select onChange={(event) => this.setState({ selectedCategory: event.target.value })} value={this.state.selectedCategory}>
+        <select onChange={(event) => this.setState({ selectedCategory: event.target.value, pagination: this.postPerLoad })} value={this.state.selectedCategory}>
           {
             this.state.categories
               .map(category =>
@@ -51,19 +54,20 @@ export default class PostPage extends React.Component {
               )
           }
         </select>
-        <ul>
-          {this.state.selectedCategory === 'All categories'? 
-              this.state.posts.map(post =>
+        <ol>
+          {this.state.selectedCategory === this.allCategoriesOption ? 
+              this.state.posts.slice(0, this.state.pagination).map(post =>
                   <li key={post['id']}>{post['title']}</li>
                 )
           : 
-            this.state.posts.filter((post) => this.isSelectedCategory(post['categories'])).map(
+            this.state.posts.filter((post) => this.isSelectedCategory(post['categories'])).slice(0, this.state.pagination).map(
               function(post: any){
                 return <li key={post['id']}>{post['title']}</li>
               }
             )
           }
-        </ul>
+        </ol>
+        <button onClick={() => this.setState({pagination: this.state.pagination + this.postPerLoad})}>Load more</button>
       </div>
 
     )
