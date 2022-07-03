@@ -1,4 +1,4 @@
-import PostPage from "../pages/postPage";
+import PostPage from "../pages/PostPage/PostPage";
 
 function App() {
   return <PostPage/>;

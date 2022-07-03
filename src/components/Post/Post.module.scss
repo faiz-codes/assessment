@@ -1,0 +1,65 @@
+.Card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    margin: 1rem;
+    box-shadow: 1px 1px 2rem rgb(0 0 0 / 30%);
+    padding: 20px;
+}
+
+.PostAuthorHeader {
+    img{
+        vertical-align: middle;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #eee;
+    }
+
+    span{
+        padding: 5px;
+        vertical-align: middle;
+    }
+    
+}
+
+.PostAuthorName {
+    font-weight: bolder;
+}
+
+.PostAuthorPublishDate {
+    font-weight: lighter;
+    float: right;
+}
+
+.PostTitle {
+    font-size: 25px;
+    color: green;
+    font-weight: bolder;
+}
+
+.PostCategory {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+    color: #fff;
+    background-color: #007bff;
+    width: fit-content;
+}
+
+.FlexWrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
