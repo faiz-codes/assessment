@@ -3,7 +3,8 @@ import { getPost } from '../api/post';
 
 export default class PostPage extends React.Component {
   state = {
-    posts: []
+    posts: [],
+    categories: []
   }
 
   componentDidMount() {
@@ -11,6 +12,20 @@ export default class PostPage extends React.Component {
       // success
       const posts = res.data.posts;
       this.setState({ posts });
+
+      // get list of unique category
+      const categories: Array<String> = [];
+      posts.forEach(post => {
+        post.categories.forEach(category => {
+          // if category not exist, push into categories array
+          if(!categories.includes(category['name'])){
+            categories.push(category['name'])
+          }
+        });
+      });
+      this.setState({ categories });
+      console.log(categories)
+
     },(err: any) => {
       // error
       alert(err);
