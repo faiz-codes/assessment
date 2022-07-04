@@ -20,7 +20,7 @@ const Post: React.FC<PostProps> = ({post}: PostProps) => {
               }
             )}
           </div>
-          <p>
+          <p className={styles.PostSummary}>
               {post.summary}
           </p>
       </div>

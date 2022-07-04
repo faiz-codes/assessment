@@ -29,6 +29,7 @@
 }
 
 .PostAuthorName {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bolder;
 }
 
@@ -39,23 +40,25 @@
 
 .PostTitle {
     font-size: 25px;
-    color: green;
     font-weight: bolder;
+    color: green;
 }
 
 .PostCategory {
     display: inline-block;
-    padding: 0.25em 0.4em;
+    padding: 0.25em 0.2em;
     line-height: 1;
     text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
     padding-right: 0.6em;
     padding-left: 0.6em;
     border-radius: 10rem;
     color: #fff;
     background-color: #007bff;
     width: fit-content;
+}
+
+.PostSummary {
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 .FlexWrap {

@@ -66,9 +66,9 @@ export default class PostPage extends React.Component {
   render() {
     return (
       <div className={styles.Container}>
-        <h1 className={styles.AlignCenter}>Posts Lists</h1>
         <div className={styles.AlignCenter}>
-          Filter 
+          <h1 className={styles.PageTitle}>Posts List</h1>
+          <span>Filter: </span> 
           <select onChange={(event) => this.setState({ selectedCategory: event.target.value, pagination: this.postPerLoad })} value={this.state.selectedCategory}>
             {
               this.state.categories
